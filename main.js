@@ -6,7 +6,9 @@ function showResults(c, res) {
         l=$('<div>')
             .append($('<img>').attr('src', res.stream.channel.logo));
         n=$('<div>').append(
-            $('<a>').attr('href',res.stream.channel.url).html(c)
+            $('<a>').attr('href',res.stream.channel.url)
+                .attr('target', '_blank')
+                .html(c)
                 .addClass('mdl-button mdl-js-button mdl-js-ripple-effect')
         );
         o=$('<div>').html(res.stream.channel.status);
