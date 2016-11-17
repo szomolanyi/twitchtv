@@ -1,0 +1,20 @@
+html>body {
+    font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
+}
+
+div.results > div > div {
+    display: flex;
+    align-items: center;
+}
+
+div#results > div > div:nth-child(even) {
+    background-color: #c5cae9;
+}
+
+div#results > div > div:nth-child(odd) {
+    background-color: #9fa8da;
+}
+
+img {
+    width: 40px;
+}
