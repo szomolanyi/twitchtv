@@ -2,16 +2,16 @@ html>body {
     font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
 }
 
-div.results > div > div {
+div#results > div {
     display: flex;
     align-items: center;
 }
 
-div#results > div > div:nth-child(even) {
+div#results > div:nth-child(even) {
     background-color: #c5cae9;
 }
 
-div#results > div > div:nth-child(odd) {
+div#results > div:nth-child(odd) {
     background-color: #9fa8da;
 }
 

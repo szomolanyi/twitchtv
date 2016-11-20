@@ -12,7 +12,6 @@ function showResults(c, res) {
                 .addClass('mdl-button mdl-js-button mdl-js-ripple-effect')
         );
         o=$('<div>').html(res.stream.channel.status);
-        result_div=$("#results-online")
     }
     else {
         l=$('<div>');
@@ -22,7 +21,6 @@ function showResults(c, res) {
                 .attr('disabled','')
         );
         o=$('<div>').html('offline');
-        result_div=$("#results-offline")
     }
     l.addClass('mdl-cell mdl-cell--1-col');
 
@@ -30,7 +28,12 @@ function showResults(c, res) {
     o.addClass('mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet');
     d=$('<div>').addClass('mdl-grid');
     d.append(l).append(n).append(o);
-    result_div.append(d);
+    if (res.stream !== null) {
+        $("#results").prepend(d)
+    }
+    else {
+        $("#results").append(d)   
+    }
 }
 
 $(document).ready(function() {
