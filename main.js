@@ -1,37 +1,32 @@
-var channels=["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+var channels=["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 
 
 function showResults(c, res) {
-    if (res.stream !== null) {
-        l=$('<div>')
-            .append($('<img>').attr('src', res.stream.channel.logo));
-        n=$('<div>').append(
-            $('<a>').attr('href',res.stream.channel.url)
-                .attr('target', '_blank')
-                .html(c)
-                .addClass('mdl-button mdl-js-button mdl-js-ripple-effect')
-        );
-        o=$('<div>').html(res.stream.channel.status);
-    }
-    else {
-        l=$('<div>');
-        n=$('<div>').append(
-            $('<a>').attr('href','#').html(c)
-                .addClass('mdl-button mdl-js-button mdl-js-ripple-effect')
-                .attr('disabled','')
-        );
-        o=$('<div>').html('offline');
-    }
+    d=$('<div>').addClass('mdl-grid');
+    l=$('<div>');
+    a=$('<a>')
+            .html(c)
+            .addClass('mdl-button mdl-js-button mdl-js-ripple-effect');
+    n=$('<div>').append(a);
+    o=$('<div>');
     l.addClass('mdl-cell mdl-cell--1-col');
-
     n.addClass('mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet');
     o.addClass('mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet');
-    d=$('<div>').addClass('mdl-grid');
     d.append(l).append(n).append(o);
-    if (res.stream !== null) {
+    if (res.status === 404) {
+        a.attr('href','#').attr('disabled','disabled')
+        o.html('Error: ' + res.error + "; " + res.message);
+        $("#results").append(d)   
+    }
+    else if (res.stream !== null) {
+        l.append($('<img>').attr('src', res.stream.channel.logo)).attr('target', '_blank')
+        a.attr('href',res.stream.channel.url);
+        o.html(res.stream.channel.status);
         $("#results").prepend(d)
     }
     else {
+        a.attr('href','#').attr('disabled','disabled');
+        o.html('offline');
         $("#results").append(d)   
     }
 }
